@@ -1,0 +1,121 @@
+<mat-card>
+    <mat-card-title>Add new Product</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="addProductForm" (submit)="createProduct()">
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Name" formControlName="name">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="categoryID">
+                        <mat-option *ngFor="let cat of service.categories" [value]="cat.id">
+                            {{cat.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Supplier</mat-label>
+                    <mat-select formControlName="supplierID">
+                        <mat-option *ngFor="let sup of service.suppliers" [value]="sup.id">
+                            {{sup.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+
+            <!-- <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Category</mat-label>
+                    <input matInput placeholder="Category" formControlName="categoryID">
+                    <select matInput placeholder="Category" formControlName="categoryID">
+
+                        <option *ngFor="let cat of service.categories" [value]="cat.id">
+                            {{cat.name}}
+                        </option>
+
+                    </select>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </p> -->
+            <!-- <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Supplier</mat-label>
+                    <input matInput placeholder="Supplier" formControlName="supplierID">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </p> -->
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Details</mat-label>
+                    <input matInput placeholder="Supplier" formControlName="details">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <input matInput placeholder="Description" formControlName="description">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="ReleaseDate" [matDatepicker]="releaseDate"
+                        formControlName="releaseDate">
+                    <mat-datepicker-toggle [for]="releaseDate" matSuffix></mat-datepicker-toggle>
+                    <mat-datepicker #releaseDate></mat-datepicker>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <input matInput placeholder="DiscontinuedDate" [matDatepicker]="discontinuedDate"
+                        formControlName="discontinuedDate">
+                    <mat-datepicker-toggle [for]="discontinuedDate" matSuffix></mat-datepicker-toggle>
+                    <mat-datepicker #discontinuedDate></mat-datepicker>
+                </mat-form-field>
+            </p>
+            <!-- <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>ReleaseDate</mat-label>
+                    <input matInput placeholder="ReleaseDate" formControlName="releaseDate">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </p> -->
+            <!-- <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>DiscontinuedDate</mat-label>
+                    <input matInput placeholder="DiscontinuedDate" formControlName="discontinuedDate">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </p> -->
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Rating</mat-label>
+                    <input matInput placeholder="Rating" formControlName="rating">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline">
+                    <mat-label>Price</mat-label>
+                    <input matInput placeholder="Price" formControlName="price">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </p>
+            <p>
+                <button class="btn btn-success">Create Product</button>
+
+            </p>
+        </form>
+    </mat-card-content>
+</mat-card>

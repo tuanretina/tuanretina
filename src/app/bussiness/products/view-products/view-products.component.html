@@ -1,0 +1,19 @@
+<!-- <div *ngIf="service.productDetail">
+    <span>Product {{service.productDetail.id}}</span>
+    {{service.productDetail.name}}
+    {{service.productDetail.description}}
+    {{service.productDetail.name}}
+    {{service.productDetail.name}}
+</div> -->
+
+<mat-list role="list" *ngIf="service.productDetail">
+    <mat-list-item role="listitem">Product: {{service.productDetail.id}}</mat-list-item>
+    <mat-list-item role="listitem">Name: {{service.productDetail.name}}</mat-list-item>
+    <mat-list-item role="listitem">Category: {{service.productDetail.category}}</mat-list-item>
+    <mat-list-item role="listitem">Supplier: {{service.productDetail.supplier}}</mat-list-item>
+    <mat-list-item role="listitem">Description: {{service.productDetail.description}}</mat-list-item>
+    <mat-list-item role="listitem">ReleaseDate: {{service.productDetail.releaseDate}}</mat-list-item>
+    <mat-list-item role="listitem">DiscontinuedDate: {{service.productDetail.discontinuedDate}}</mat-list-item>
+    <mat-list-item role="listitem">Rating: {{service.productDetail.rating}}*</mat-list-item>
+    <mat-list-item role="listitem">Price: {{service.productDetail.price}}$</mat-list-item>
+</mat-list>

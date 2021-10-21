@@ -1,0 +1,111 @@
+<nav class="navbar">
+    <input class="form-control" type="text" name="keyword" [(ngModel)]="service.keyword" (ngModelChange)="Search()"
+        placeholder="Search">
+</nav>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Supplier</th>
+            <th scope="col">Category</th>
+            <th scope="col">ReleaseDate</th>
+            <th scope="col">DiscontinuedDate</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr
+            *ngFor="let product of service.products | paginate: { itemsPerPage: service.pageSize, currentPage: service.pageIndex }">
+            <td>{{product.name }}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.supplier}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.releaseDate}}</td>
+            <td>{{product.discontinuedDate}}</td>
+            <td>{{product.rating}}*</td>
+            <td>{{product.price}}$</td>
+            <td> <i class="fas fa-edit" [routerLink]="['/products/edit', product.id]">Edit</i>
+                | <i class="fas fa-info-circle" [routerLink]="['/products/view', product.id]">View</i>
+                | <i class="fas fa-trash" [routerLink]="['/products/delete', product.id]">Delete</i>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<span class="totalRecord" *ngIf="service.totalRecords">Total {{service.totalRecords}}
+    Product
+</span>
+
+<div>
+    <pagination-controls (pageChange)="service.pageIndex = $event"></pagination-controls>
+</div>
+
+<!-- <div class="main-content">
+    <table mat-table [dataSource]="service.products" class="mat-elevation-z8" matSort>
+        <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef mat-soft-header> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-soft-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef mat-soft-header> Category </th>
+            <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="supplier">
+            <th mat-header-cell *matHeaderCellDef mat-soft-header> Supplier </th>
+            <td mat-cell *matCellDef="let element"> {{element.supplier}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-soft-header> Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="releaseDate">
+            <th mat-header-cell *matHeaderCellDef mat-soft-header> ReleaseDate </th>
+            <td mat-cell *matCellDef="let element"> {{element.releaseDate}} </td>
+
+        </ng-container>
+        <ng-container matColumnDef="discontinuedDate">
+            <th mat-header-cell *matHeaderCellDef mat-soft-header> DiscontinuedDate </th>
+            <td mat-cell *matCellDef="let element"> {{element.discontinuedDate}} </td>
+
+        </ng-container>
+        <ng-container matColumnDef="rating">
+            <th mat-header-cell *matHeaderCellDef mat-soft-header> Rating </th>
+            <td mat-cell *matCellDef="let element"> {{element.rating}} * </td>
+
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-soft-header> Price </th>
+            <td mat-cell *matCellDef="let element"> {{element.price}}$</td>
+        </ng-container>
+
+        <ng-container matColumnDef="function">
+            <th mat-header-cell *matHeaderCellDef mat-soft-header> Actions </th>
+            <td mat-cell *matCellDef="let element">
+                <a [routerLink]="['/products/edit', element.id]">Edit</a>
+                | <a [routerLink]="['/products/view', element.id]">View</a>
+                | <a [routerLink]="['/products/delete', element.id]">Delete</a>
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+    </mat-paginator>
+</div> -->
